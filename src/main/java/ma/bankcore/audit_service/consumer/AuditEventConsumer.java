@@ -34,7 +34,7 @@ public class AuditEventConsumer {
     @KafkaListener(
         topics = "client-events",
         groupId = "audit-group",
-        containerFactory = "kafkaListenerContainerFactory"
+        containerFactory = "clientKafkaListenerContainerFactory"
     )
     public void handleClientCree(ClientCreeEvent event) {
         log.info("Événement création client reçu : {}", event.getEmail());
@@ -44,7 +44,7 @@ public class AuditEventConsumer {
     @KafkaListener(
         topics = "compte-events",
         groupId = "audit-group",
-        containerFactory = "kafkaListenerContainerFactory"
+        containerFactory = "compteKafkaListenerContainerFactory"
     )
     public void handleCompteBloquer(CompteBloqueEvent event) {
         log.info("Événement blocage compte reçu : {}", event.getRib());
