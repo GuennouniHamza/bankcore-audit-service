@@ -25,7 +25,7 @@ public class AuditService {
         this.auditLogRepository = auditLogRepository;
     }
 
-    @Async
+    @Async("auditTaskExecutor")
     public CompletableFuture<Void> tracerVirement(VirementEffectueEvent event) {
         log.debug("Traçage virement : {} → {}", event.getRibSource(), event.getRibDest());
 
@@ -46,7 +46,7 @@ public class AuditService {
         return CompletableFuture.completedFuture(null);
     }
 
-    @Async
+    @Async("auditTaskExecutor")
     public CompletableFuture<Void> tracerCreationClient(ClientCreeEvent event) {
         log.debug("Traçage création client : {}", event.getEmail());
 
@@ -66,7 +66,7 @@ public class AuditService {
         return CompletableFuture.completedFuture(null);
     }
 
-    @Async
+    @Async("auditTaskExecutor")
     public CompletableFuture<Void> tracerBlocageCompte(CompteBloqueEvent event) {
         log.debug("Traçage blocage compte : {}", event.getRib());
 
