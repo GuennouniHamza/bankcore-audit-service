@@ -17,8 +17,10 @@ public class AsyncConfig {
 
     @Bean(name = "auditTaskExecutor")
     public Executor auditTaskExecutor() {
+    	//Un ThreadPool est un ensemble de threads déjà créés et réutilisés 
+        //pour exécuter des tâches
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
-
+        
         executor.setCorePoolSize(5);      // 5 threads toujours actifs
         executor.setMaxPoolSize(10);      // max 10 threads en cas de pic
         executor.setQueueCapacity(25);    // 25 tâches en attente max
